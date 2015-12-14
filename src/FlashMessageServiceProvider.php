@@ -20,7 +20,7 @@ class FlashMessageServiceProvider extends ServiceProvider {
     {
         $this->registerHtmlBuilder();
 
-        $this->app->alias('flash', 'Collective\Html\HtmlBuilder');
+        $this->app->alias('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
     /**
@@ -43,7 +43,7 @@ class FlashMessageServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('flash', 'KouTsuneka\FlashMessage\FlashBuilder');
+        return array('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
 }

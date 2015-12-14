@@ -15,9 +15,6 @@
   "autoload": {
     "psr-4": {
       "FlashMessage\\Fmsg\\": "src/"
-    },
-    "files": [
-      "src/helpers.php"
-    ]
+    }
   }
 }
