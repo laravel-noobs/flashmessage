@@ -18,9 +18,9 @@ class FlashMessageServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->registerHtmlBuilder();
+        $this->registerFlashBuilder();
 
-        $this->app->alias('flash', 'Collective\Html\HtmlBuilder');
+        $this->app->alias('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
     /**
@@ -28,7 +28,7 @@ class FlashMessageServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    protected function registerHtmlBuilder()
+    protected function registerFlashBuilder()
     {
         $this->app->bindShared('flash', function($app)
         {
@@ -43,7 +43,7 @@ class FlashMessageServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('flash', 'KouTsuneka\FlashMessage\FlashBuilder');
+        return array('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
 }
