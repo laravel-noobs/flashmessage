@@ -100,5 +100,6 @@ class Message
             $arr['option']['showMethod'] = $this->showMethod;
         if(!empty($hideMethod))
             $arr['option']['hideMethod'] = $this->hideMethod;
+        return $arr;
     }
 }

@@ -1,12 +1,12 @@
 <?php namespace KouTsuneka\FlashMessage;
 
-use \Illuminate\Session\Store;
+use \Illuminate\Session\SessionManager;
 
 class FlashMessageBuilder {
     /**
      * The session store implementation.
      *
-     * @var \Illuminate\Session\Store
+     * @var \Illuminate\Session\SessionManager
      */
     protected $session;
 
@@ -16,9 +16,9 @@ class FlashMessageBuilder {
     protected $flash_key = '_flash';
 
     /**
-     * @param Session $session
+     * @param \Illuminate\Session\SessionManager $session
      */
-    public function __construct(Session $session)
+    public function __construct(SessionManager $session)
     {
         $this->session = $session;
     }
