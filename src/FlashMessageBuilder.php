@@ -23,6 +23,21 @@ class FlashMessageBuilder {
         $this->session = $session;
     }
 
+    /**
+     * @return string
+     */
+    public function get_key()
+    {
+        return $this->flash_key;
+    }
+
+    /**
+     * @param string $key
+     */
+    public function set_key($key)
+    {
+        $this->flash_key = $key;
+    }
 
     /**
      * @param string $type
@@ -62,5 +77,15 @@ class FlashMessageBuilder {
     {
         $this->push_msg($this->make($type, $title, $message, $options));
         return $this;
+    }
+
+    /**
+     * @return Message[]
+     */
+    public function get()
+    {
+        if($this->session->has($this->flash_key));
+            return $this->session->get($this->flash_key);
+        return [];
     }
 }
