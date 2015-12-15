@@ -1,6 +1,6 @@
 <?php namespace KouTsuneka\FlashMessage;
 
-use \Illuminate\Session\SessionManager;
+use \Illuminate\Session\SessionInterface;
 
 class FlashMessageBuilder {
     /**
@@ -29,12 +29,13 @@ class FlashMessageBuilder {
         return $this;
     }
 
+
     /**
-     * @param \Illuminate\Session\SessionInterface $session
+     *
      */
-    public function __construct(SessionInterface $session)
+    public function __construct()
     {
-        $this->session = $session;
+
     }
 
     /**
@@ -110,6 +111,9 @@ class FlashMessageBuilder {
         return [];
     }
 
+    /**
+     * @return array|string
+     */
     public function encode()
     {
         if($this->session->has($this->flash_key));
