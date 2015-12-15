@@ -87,10 +87,30 @@ class FlashMessageBuilder {
         if($this->session->has($this->flash_key));
         {
             $messages = $this->session->get($this->flash_key);
+            if($messages == null)
+                return [];
             $this->session->set($this->flash_key, []);
             return $messages;
         }
 
         return [];
+    }
+
+    public function encode()
+    {
+        if($this->session->has($this->flash_key));
+        {
+            $messages = $this->session->get($this->flash_key);
+            if($messages == null)
+                return json_encode([]);
+            $this->session->set($this->flash_key, []);
+            $encoded_messages = [];
+            foreach($messages as $msg)
+                array_push($encoded_messages, $msg->encode());
+            $encoded_messages = '[' . implode(',', $encoded_messages) . ']';
+            return $encoded_messages;
+        }
+
+        return json_encode([]);
     }
 }
