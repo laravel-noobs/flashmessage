@@ -61,7 +61,7 @@ class FlashMessageBuilder {
      * @param array $options
      * @return Message
      */
-    public function make($type, $title, $message, $options = [])
+    public function make($type, $message, $title, $options = [])
     {
         return new Message($type, $title, $message, $options);
     }
@@ -88,7 +88,7 @@ class FlashMessageBuilder {
      * @param array $options
      * @return FlashMessageBuilder
      */
-    public function push($title, $message, $type = "success", $options = [])
+    public function push($message, $title, $type = "success", $options = [])
     {
         $this->push_msg($this->make($type, $title, $message, $options));
         return $this;
