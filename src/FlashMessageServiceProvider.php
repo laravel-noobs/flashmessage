@@ -9,18 +9,11 @@ class FlashMessageServiceProvider extends ServiceProvider {
      *
      * @var bool
      */
-    protected $defer = true;
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
         $this->registerFlashBuilder();
 
-        $this->app->alias('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
+        $this->app->alias('flash', '\KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
     /**
@@ -30,9 +23,10 @@ class FlashMessageServiceProvider extends ServiceProvider {
      */
     protected function registerFlashBuilder()
     {
-        $this->app->bindShared('flash', function($app)
+        $this->app->singleton('flash', function($app)
         {
-            return new FlashMessageBuilder($app['session']);
+            $flash = new FlashMessageBuilder();
+            return $flash->set_session_store($app['session.store']);
         });
     }
 

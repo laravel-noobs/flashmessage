@@ -6,7 +6,7 @@ class FlashMessageBuilder {
     /**
      * The session store implementation.
      *
-     * @var \Illuminate\Session\SessionManager
+     * @var \Illuminate\Session\SessionInterface
      */
     protected $session;
 
@@ -16,9 +16,23 @@ class FlashMessageBuilder {
     protected $flash_key = '_flash';
 
     /**
-     * @param \Illuminate\Session\SessionManager $session
+     * Set the session store implementation.
+     *
+     * @param  \Illuminate\Session\SessionInterface $session
+     *
+     * @return $this
      */
-    public function __construct(SessionManager $session)
+    public function set_session_store(SessionInterface $session)
+    {
+        $this->session = $session;
+
+        return $this;
+    }
+
+    /**
+     * @param \Illuminate\Session\SessionInterface $session
+     */
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
     }
