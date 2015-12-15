@@ -85,7 +85,12 @@ class FlashMessageBuilder {
     public function get()
     {
         if($this->session->has($this->flash_key));
-            return $this->session->get($this->flash_key);
+        {
+            $messages = $this->session->get($this->flash_key);
+            $this->session->set($this->flash_key, []);
+            return $messages;
+        }
+
         return [];
     }
 }
