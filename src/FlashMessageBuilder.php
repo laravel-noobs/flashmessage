@@ -90,7 +90,7 @@ class FlashMessageBuilder {
      */
     public function push($message, $title, $type = "success", $options = [])
     {
-        $this->push_msg($this->make($type, $title, $message, $options));
+        $this->push_msg($this->make($type, $message, $title, $options));
         return $this;
     }
 
