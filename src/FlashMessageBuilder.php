@@ -61,8 +61,8 @@ class FlashMessageBuilder {
         $messages = [];
         if($this->session->has($this->flash_key))
             $messages = $this->session->get($this->flash_key);
-        $message[] = $msg;
-        $this->session->set($this->flash_key, $messages);
+        array_push($messages, $msg);
+        $this->session->flash($this->flash_key, $messages);
         return $this;
     }
 
