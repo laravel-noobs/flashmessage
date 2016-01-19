@@ -5,6 +5,16 @@ use Illuminate\Support\ServiceProvider;
 class FlashMessageServiceProvider extends ServiceProvider {
 
     /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__ . '/views', '_flashmessage');
+    }
+
+    /**
      * Indicates if loading of the provider is deferred.
      *
      * @var bool
@@ -13,7 +23,7 @@ class FlashMessageServiceProvider extends ServiceProvider {
     {
         $this->registerFlashBuilder();
 
-        $this->app->alias('flash', '\KouTsuneka\FlashMessage\FlashMessageBuilder');
+        $this->app->alias('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
 
     /**
@@ -39,5 +49,4 @@ class FlashMessageServiceProvider extends ServiceProvider {
     {
         return array('flash', 'KouTsuneka\FlashMessage\FlashMessageBuilder');
     }
-
 }
